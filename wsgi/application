@@ -4,11 +4,8 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR']))
-
-#TODO: need to be templatize
-os.environ['DJANGO_SETTINGS_MODULE'] = 'djangotest.settings'
-
-virtenv = os.environ['OPENSHIFT_HOMEDIR'] + 'python-2.6/virtenv/'
+os.environ['DJANGO_SETTINGS_MODULE'] = '{{ project_name }}.settings_openshift'
+virtenv = os.environ['OPENSHIFT_PYTHON_DIR'] + '/virtenv/'
 
 # env shows this as the egg cache:
 # PYTHON_EGG_CACHE=/var/lib/openshift/ecad07d3b3a7455085c8644d2f04e6bc/python-2.6/.python-eggs/
@@ -24,9 +21,5 @@ except IOError:
 # line, it's possible required libraries won't be in your searchable path
 # 
 
-"""
 import django.core.handlers.wsgi
 application = django.core.handlers.wsgi.WSGIHandler()
-"""
-from django.core.wsgi import get_wsgi_application
-application = get_wsgi_application()
