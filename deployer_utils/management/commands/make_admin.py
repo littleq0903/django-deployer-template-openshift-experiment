@@ -8,7 +8,7 @@ class Command(NoArgsCommand):
 
     def handle_noargs(self, **options):
         u, created = User.objects.get_or_create(username='admin')
-        password = 'P@s$w0rd1'
+        password = '{{ admin_password }}'
         if created:
             u.set_password(password)
             u.is_superuser = True
