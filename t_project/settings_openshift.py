@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from settings import *
 import urlparse
+import os
 
 #############
 # DATABASES #
