@@ -85,7 +85,9 @@ else:
     MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
 
 
-DEPLOYER_APPS = tuple()
+DEPLOYER_APPS = (
+        'deployer_utils',
+        )
 INSTALLED_APPS += DEPLOYER_APPS
 
 
