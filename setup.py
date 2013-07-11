@@ -12,7 +12,7 @@ DESCRIPTION = '<your-project-description>'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-REQUIREMENTS = [ ri.req for ri in parse_requirements(REQUIREMENTS_FILE) ]
+REQUIREMENTS = [ str(ri.req) for ri in parse_requirements(REQUIREMENTS_FILE) ]
 
 setup(name=PROJECT_NAME,
 	version='1.0',
