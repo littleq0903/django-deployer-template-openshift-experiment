@@ -1,0 +1,3 @@
+#!/bin/bash
+{{ bash_header }}
+echo "$0 has been executed!"
