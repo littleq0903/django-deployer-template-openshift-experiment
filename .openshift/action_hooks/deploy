@@ -8,17 +8,20 @@ source ${OPENSHIFT_PYTHON_DIR}virtenv/bin/activate
  
 export PYTHON_EGG_CACHE=${OPENSHIFT_PYTHON_DIR}virtenv/lib/python-2.6/site-packages
 
-DJANGO_SETTINGS={{ project_name }}.settings_openshift
+DJANGO_SETTINGS=settings_openshift
 
 cd ${OPENSHIFT_REPO_DIR}
 pip install -r ${OPENSHIFT_REPO_DIR}requirements.openshift.txt --log /tmp/pip.log --build /tmp/build
 
-echo "Executing 'python ${OPENSHIFT_REPO_DIR}{{ project_name }}/manage.py syncdb --noinput'"
+echo "Executing 'python ${OPENSHIFT_REPO_DIR}{{ managepy }} syncdb --noinput'"
 python "$OPENSHIFT_REPO_DIR"{{ managepy }} syncdb --noinput --settings=$DJANGO_SETTINGS
 
-echo "Executing 'python ${OPENSHIFT_REPO_DIR}{{ project_name }}/manage.py make_admin'"
+echo "Executing 'python ${OPENSHIFT_REPO_DIR}{{ managepy }} make_admin'"
 python "$OPENSHIFT_REPO_DIR"{{ managepy }} make_admin --settings=$DJANGO_SETTINGS
 
-echo "Executing 'python ${OPENSHIFT_REPO_DIR}{{ project_name }}/manage.py collectstatic --noinput -v0'"
+echo "Executing 'python ${OPENSHIFT_REPO_DIR}{{ managepy }} migrate'"
+python "$OPENSHIFT_REPO_DIR"{{ managepy }} migrate --settings=$DJANGO_SETTINGS
+
+echo "Executing 'python ${OPENSHIFT_REPO_DIR}{{ managepy }} collectstatic --noinput -v0'"
 python "$OPENSHIFT_REPO_DIR"{{ managepy }} collectstatic --noinput -v0 --settings=$DJANGO_SETTINGS
 
