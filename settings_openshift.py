@@ -15,7 +15,7 @@ PROJECT_DIRNAME = PROJECT_ROOT.split(os.sep)[-1]
 
 sys.path.insert(0, PROJECT_ROOT)
 
-from settings import *
+from {{ django_settings }} import *
 
 #############
 # DATABASES #
