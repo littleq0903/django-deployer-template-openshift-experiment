@@ -70,10 +70,14 @@ if 'OPENSHIFT_REPO_DIR' in os.environ:
 else:
     STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
 
+STATIC_URL = '{{ static_url }}'
+
 if 'OPENSHIFT_DATA_DIR' in os.environ:
     MEDIA_ROOT = os.path.join(os.environ.get('OPENSHIFT_DATA_DIR'), 'media')
 else:
     MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
+
+MEDIA_URL = '{{ media_url }}'
 
 
 DEPLOYER_APPS = (
