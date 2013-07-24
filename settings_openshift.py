@@ -9,6 +9,8 @@ import sys
 
 # Full filesystem path to the project.
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+OPENSHIFT_DATA_DIR = os.environ.get('OPENSHIFT_DATA_DIR')
+OPENSHIFT_REPO_DIR = os.environ.get('OPENSHIFT_REPO_DIR')
 
 # Name of the directory for the project.
 PROJECT_DIRNAME = PROJECT_ROOT.split(os.sep)[-1]
