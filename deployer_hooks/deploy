@@ -1,3 +1,8 @@
 #!/bin/bash
 {{ bash_header }}
+
+git add .
+git commit -am 'automatically commiteed by django deployer'
+git push rhc master --force
+
 echo "$0 has been executed!"
